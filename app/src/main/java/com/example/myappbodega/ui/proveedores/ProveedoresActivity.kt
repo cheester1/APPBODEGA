@@ -1,4 +1,4 @@
-package com.example.myappbodega.ui.productosfaltantes
+package com.example.myappbodega.ui.proveedores
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,34 +10,34 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
-class ProductosFaltantesActivity : ComponentActivity() {
+class ProveedoresActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            ProductosFaltantesScreen { finish() }
+            ProveedoresScreen { finish() }
         }
     }
 }
 
 @Composable
-fun ProductosFaltantesScreen(onBack: () -> Unit) {
-    val productosFaltantesPrueba = listOf(
-        "Leche - 0 en stock",
-        "Pan - 2 en stock",
-        "Huevos - 0 en stock",
-        "Galletas - 1 en stock",
-        "Refrescos - 0 en stock"
+fun ProveedoresScreen(onBack: () -> Unit) {
+    val proveedoresPrueba = listOf(
+        "Distribuidora Central",
+        "Abarrotes del Norte",
+        "Lácteos y Más",
+        "Bebidas México",
+        "Verduras Selectas"
     )
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Text("Productos Faltantes", style = MaterialTheme.typography.headlineMedium)
+            Text("Proveedores", style = MaterialTheme.typography.headlineMedium)
             Spacer(modifier = Modifier.height(24.dp))
-            // Lista de productos faltantes de prueba
-            productosFaltantesPrueba.forEach { producto ->
-                Text(producto)
+            // Lista de proveedores de prueba
+            proveedoresPrueba.forEach { proveedor ->
+                Text(proveedor)
                 Spacer(modifier = Modifier.height(8.dp))
             }
             Spacer(modifier = Modifier.height(24.dp))

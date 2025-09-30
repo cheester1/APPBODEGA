@@ -1,4 +1,4 @@
-package com.example.myappbodega.ui.productosfaltantes
+package com.example.myappbodega.ui.productos
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -9,36 +9,31 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.myappbodega.data.productosPrueba
 
-class ProductosFaltantesActivity : ComponentActivity() {
+class ProductosActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            ProductosFaltantesScreen { finish() }
+            ProductosScreen { finish() }
         }
     }
 }
 
 @Composable
-fun ProductosFaltantesScreen(onBack: () -> Unit) {
-    val productosFaltantesPrueba = listOf(
-        "Leche - 0 en stock",
-        "Pan - 2 en stock",
-        "Huevos - 0 en stock",
-        "Galletas - 1 en stock",
-        "Refrescos - 0 en stock"
-    )
+fun ProductosScreen(onBack: () -> Unit) {
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Text("Productos Faltantes", style = MaterialTheme.typography.headlineMedium)
+            Text("Productos", style = MaterialTheme.typography.headlineMedium)
             Spacer(modifier = Modifier.height(24.dp))
-            // Lista de productos faltantes de prueba
-            productosFaltantesPrueba.forEach { producto ->
-                Text(producto)
-                Spacer(modifier = Modifier.height(8.dp))
+            // Lista de productos de prueba
+            productosPrueba.forEach { producto ->
+                Text("${producto.nombre} - ${producto.descripcion}")
+                Text("Precio: \$${producto.precio} | Stock: ${producto.stock}")
+                Spacer(modifier = Modifier.height(12.dp))
             }
             Spacer(modifier = Modifier.height(24.dp))
             Button(onClick = onBack) {
