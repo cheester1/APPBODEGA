@@ -3,7 +3,6 @@ package com.example.myappbodega.ui.productos
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -11,8 +10,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.layout.ContentScale
-import coil.compose.rememberAsyncImagePainter
+import androidx.compose.foundation.Image
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.graphics.Color
 import com.example.myappbodega.data.productosPrueba
+import coil.compose.AsyncImage
 
 class ProductosActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,17 +35,16 @@ fun ProductosScreen(onBack: () -> Unit) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Text("Productos", style = MaterialTheme.typography.headlineMedium)
             Spacer(modifier = Modifier.height(24.dp))
-            // Lista de productos de prueba
             productosPrueba.forEach { producto ->
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
                     modifier = Modifier.padding(bottom = 16.dp)
                 ) {
-                    Image(
-                        painter = rememberAsyncImagePainter(producto.img),
+                    AsyncImage(
+                        model = producto.img,
                         contentDescription = producto.nombre,
                         modifier = Modifier.size(120.dp),
-                        contentScale = ContentScale.Crop
+                        contentScale = ContentScale.Crop,
                     )
                     Text("${producto.nombre} - ${producto.descripcion}")
                     Text("Precio: \$${producto.precio} | Stock: ${producto.stock}")

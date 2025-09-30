@@ -1,6 +1,5 @@
-package com.example.myappbodega.ui.Login
+package com.example.myappbodega.ui.login
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -18,7 +17,6 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import com.example.myappbodega.ui.theme.MyAppBodegaTheme
-import com.example.myappbodega.ui.Principal
 
 class LoginActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,30 +28,20 @@ class LoginActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    LoginScreen { goToPrincipal() }
+                    LoginScreen()
                 }
             }
         }
     }
-
-    private fun goToPrincipal() {
-        val intent = Intent(this, Principal::class.java)
-        startActivity(intent)
-        finish()
-    }
 }
 
 @Composable
-fun LoginScreen(onLoginSuccess: () -> Unit) {
+fun LoginScreen() {
     val context = LocalContext.current
 
     var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var errorMessage by remember { mutableStateOf("") }
-
-    // Define tus credenciales válidas
-    val validUsername = "admin"
-    val validPassword = "1234"
 
     Box(
         modifier = Modifier.fillMaxSize(),
@@ -99,23 +87,12 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
 
             Button(
                 onClick = {
-                    errorMessage = when {
-                        username == validUsername && password == validPassword -> {
-                            onLoginSuccess()
-                            ""
-                        }
-                        username == validUsername -> {
-                            Toast.makeText(context, "Usuario correcto, contraseña incorrecta", Toast.LENGTH_SHORT).show()
-                            "Contraseña incorrecta"
-                        }
-                        password == validPassword -> {
-                            Toast.makeText(context, "Contraseña correcta, usuario incorrecto", Toast.LENGTH_SHORT).show()
-                            "Usuario incorrecto"
-                        }
-                        else -> {
-                            Toast.makeText(context, "Usuario y contraseña incorrectos", Toast.LENGTH_SHORT).show()
-                            "Usuario y contraseña incorrectos"
-                        }
+                    if (username.isBlank() || password.isBlank()) {
+                        errorMessage = "Por favor, completa todos los campos"
+                    } else {
+                        errorMessage = ""
+                        Toast.makeText(context, "Login exitoso", Toast.LENGTH_SHORT).show()
+                        // Aquí puedes navegar a la siguiente pantalla o realizar el login real
                     }
                 },
                 modifier = Modifier.fillMaxWidth()
