@@ -1,4 +1,4 @@
-package com.example.myappbodega.ui.login
+package com.example.myappbodega.ui.Login
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -13,7 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.myappbodega.ui.theme.MyAppBodegaTheme
 
-class MainActivity : ComponentActivity() {
+class Login : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -33,7 +33,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     Text(
-        text = "Hello $name!",
+        text = "logiddn $name!",
         modifier = modifier
     )
 }
