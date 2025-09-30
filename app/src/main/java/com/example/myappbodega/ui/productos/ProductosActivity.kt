@@ -3,12 +3,15 @@ package com.example.myappbodega.ui.productos
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.layout.ContentScale
+import coil.compose.rememberAsyncImagePainter
 import com.example.myappbodega.data.productosPrueba
 
 class ProductosActivity : ComponentActivity() {
@@ -31,8 +34,19 @@ fun ProductosScreen(onBack: () -> Unit) {
             Spacer(modifier = Modifier.height(24.dp))
             // Lista de productos de prueba
             productosPrueba.forEach { producto ->
-                Text("${producto.nombre} - ${producto.descripcion}")
-                Text("Precio: \$${producto.precio} | Stock: ${producto.stock}")
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier.padding(bottom = 16.dp)
+                ) {
+                    Image(
+                        painter = rememberAsyncImagePainter(producto.img),
+                        contentDescription = producto.nombre,
+                        modifier = Modifier.size(120.dp),
+                        contentScale = ContentScale.Crop
+                    )
+                    Text("${producto.nombre} - ${producto.descripcion}")
+                    Text("Precio: \$${producto.precio} | Stock: ${producto.stock}")
+                }
                 Spacer(modifier = Modifier.height(12.dp))
             }
             Spacer(modifier = Modifier.height(24.dp))

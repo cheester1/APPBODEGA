@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.myappbodega.data.productosFaltantesPrueba
 
 class ProductosFaltantesActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,13 +22,6 @@ class ProductosFaltantesActivity : ComponentActivity() {
 
 @Composable
 fun ProductosFaltantesScreen(onBack: () -> Unit) {
-    val productosFaltantesPrueba = listOf(
-        "Leche - 0 en stock",
-        "Pan - 2 en stock",
-        "Huevos - 0 en stock",
-        "Galletas - 1 en stock",
-        "Refrescos - 0 en stock"
-    )
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center

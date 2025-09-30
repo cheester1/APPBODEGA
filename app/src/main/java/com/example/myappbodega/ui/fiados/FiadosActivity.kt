@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.myappbodega.data.fiadosPrueba
 
 class FiadosActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,12 +22,6 @@ class FiadosActivity : ComponentActivity() {
 
 @Composable
 fun FiadosScreen(onBack: () -> Unit) {
-    val fiadosPrueba = listOf(
-        "Ana López - $500",
-        "Carlos Díaz - $200",
-        "María Torres - $150",
-        "Juan Pérez - $75"
-    )
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
