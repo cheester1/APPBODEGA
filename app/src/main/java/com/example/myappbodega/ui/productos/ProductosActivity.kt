@@ -9,13 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.foundation.Image
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.graphics.Color
 import com.example.myappbodega.data.productosPrueba
-import coil.compose.AsyncImage
 
 class ProductosActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,12 +34,7 @@ fun ProductosScreen(onBack: () -> Unit) {
                     horizontalAlignment = Alignment.CenterHorizontally,
                     modifier = Modifier.padding(bottom = 16.dp)
                 ) {
-                    AsyncImage(
-                        model = producto.img,
-                        contentDescription = producto.nombre,
-                        modifier = Modifier.size(120.dp),
-                        contentScale = ContentScale.Crop,
-                    )
+
                     Text("${producto.nombre} - ${producto.descripcion}")
                     Text("Precio: \$${producto.precio} | Stock: ${producto.stock}")
                 }
